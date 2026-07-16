@@ -173,23 +173,6 @@ cd SKALA-FRONT
 - [Open-Meteo Weather Forecast API](https://open-meteo.com/en/docs)
 - [Open-Meteo Air Quality API](https://open-meteo.com/en/docs/air-quality-api)
 
-API Key 없이 학습용 실시간 데이터를 요청하며, 네트워크 상태에 따라 데이터 표시가 지연될 수 있습니다.
-
-## 📷 스크린샷 추가 방법
-
-1. 기능별 화면을 PNG 또는 JPG로 캡처합니다.
-2. 캡처 파일을 `docs/images/` 폴더에 저장합니다.
-3. 위 기능 설명에 적힌 파일명과 동일하게 이름을 지정합니다.
-4. 해당 기능 아래의 `<!--`, `-->`를 제거해 이미지 Markdown을 활성화합니다.
-
-Markdown 이미지 문법은 다음과 같습니다.
-
-```md
-![이미지를 설명하는 대체 문구](docs/images/01-main.png)
-```
-
-권장 이미지 너비는 약 1200~1600px이며, 같은 화면 비율로 맞추면 README가 더 정돈되어 보입니다.
-
 ## 📚 주요 학습 내용
 
 - HTML 문서 구조와 시맨틱 태그
@@ -199,12 +182,6 @@ Markdown 이미지 문법은 다음과 같습니다.
 - DOM 선택과 이벤트 리스너
 - 비동기 통신과 JSON 데이터 처리
 - `export`와 `import`를 이용한 모듈 분리
-
-## 🔭 향후 개선 계획
-
-- 도시 이름 직접 검색 기능
-- 공휴일 API와 다음 휴일까지의 D-Day 계산
-- GitHub 공개 저장소를 이용한 포트폴리오 자동 표시
 
 ## 👤 Maintainer
 
