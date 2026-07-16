@@ -23,6 +23,10 @@
     --blue-700: #1b64da;
     --red-50: #ffeeee;
     --red-600: #e42939;
+    --orange-50: #fff3e0;
+    --orange-800: #ed6700;
+    --green-50: #f0faf6;
+    --green-800: #028450;
     --white: #ffffff;
     --radius-small: 12px;
     --radius-medium: 20px;
@@ -339,7 +343,7 @@ figcaption {
 }
 
 #weather-box {
-    min-height: 154px;
+    min-height: 290px;
     margin-top: 14px;
     padding: 18px;
     background-color: var(--white);
@@ -350,6 +354,84 @@ figcaption {
 
 #weather-box p {
     margin: 8px 0;
+}
+
+/* 위치명과 좌표는 지표 카드보다 먼저 읽히는 요약 정보이다. */
+.weather-location {
+    color: var(--grey-900);
+    font-size: 15px;
+}
+
+.weather-coordinate {
+    margin-bottom: 14px !important;
+    color: var(--grey-500);
+    font-size: 12px;
+}
+
+/* 네 개의 실시간 수치를 같은 크기의 2열 카드로 배치한다. */
+.weather-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.weather-metric-card {
+    min-width: 0;
+    padding: 14px;
+    background-color: var(--grey-50);
+    border-radius: 15px;
+}
+
+.weather-metric-card--primary {
+    background-color: var(--blue-50);
+}
+
+.weather-metric-label,
+.weather-metric-detail {
+    display: block;
+    color: var(--grey-600);
+    font-size: 11px;
+}
+
+.weather-metric-value {
+    display: block;
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+    color: var(--grey-900);
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+}
+
+/* API 수치를 사용자가 바로 이해하도록 상태별 색상 배지를 사용한다. */
+.environment-status {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 5px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.environment-status--good {
+    color: var(--green-800);
+    background-color: var(--green-50);
+}
+
+.environment-status--moderate {
+    color: var(--orange-800);
+    background-color: var(--orange-50);
+}
+
+.environment-status--bad {
+    color: var(--red-600);
+    background-color: var(--red-50);
+}
+
+.environment-status--unknown {
+    color: var(--grey-600);
+    background-color: var(--grey-200);
 }
 
 .weather-message {
@@ -535,28 +617,43 @@ tbody td:first-child {
     padding: 6px 0;
 }
 
+/* 설명 목록은 '단어 | 설명'이 한 행을 이루도록 두 열로 고정한다. */
 dl {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: minmax(130px, 0.35fr) minmax(0, 1fr);
     margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--grey-200);
+    border-radius: 20px;
+}
+
+/* dt와 바로 뒤의 dd가 같은 행에 놓이므로 제목과 설명이 뒤바뀌지 않는다. */
+dt,
+dd {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    margin: 0;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--grey-200);
 }
 
 dt {
-    margin: 0;
-    padding: 22px 22px 0;
+    color: var(--grey-900);
     background-color: var(--grey-50);
-    border-radius: 20px 20px 0 0;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 750;
 }
 
 dd {
-    margin: -16px 0 0;
-    padding: 38px 22px 22px;
     color: var(--grey-700);
-    background-color: var(--grey-50);
-    border-radius: 0 0 20px 20px;
+    background-color: var(--white);
+}
+
+/* 마지막 '공감' 행에는 아래쪽 구분선을 만들지 않는다. */
+dt:last-of-type,
+dd:last-child {
+    border-bottom: 0;
 }
 
 /* 폼 그룹은 테두리 대신 옅은 배경과 둥근 모서리로 구분한다. */
@@ -725,8 +822,7 @@ footer p {
         position: static;
     }
 
-    .trip-grid,
-    dl {
+    .trip-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
@@ -772,9 +868,24 @@ footer p {
         padding: 22px;
     }
 
-    .trip-grid,
+    .trip-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 모바일에서는 단어 아래에 해당 설명이 바로 이어지도록 한 열로 바꾼다. */
     dl {
         grid-template-columns: 1fr;
+    }
+
+    dt {
+        padding: 18px 20px 4px;
+        color: var(--blue-700);
+        background-color: var(--white);
+        border-bottom: 0;
+    }
+
+    dd {
+        padding: 0 20px 18px;
     }
 
     table {
@@ -805,6 +916,13 @@ footer p {
     input[type="reset"] {
         width: 100%;
         margin: 5px 0;
+    }
+}
+
+/* 매우 좁은 화면에서는 날씨 지표도 한 줄에 하나씩 표시한다. */
+@media (max-width: 380px) {
+    .weather-metric-grid {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-     <!-- link는 현재 HTML과 외부 CSS 파일을 연결한다. ../는 상위 폴더를 뜻한다. -->
      <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <!-- viewport 설정은 모바일 화면 너비에 맞게 문서를 표시한다. -->
@@ -33,7 +32,6 @@
     </nav>
 
     <hr>
-
     <!-- 미션 4: main과 aside를 한 부모로 묶어 CSS Grid의 2열로 배치한다. -->
     <div class="content-layout">
     <!-- main은 페이지마다 하나만 사용하며 핵심 본문을 담는다. -->
@@ -76,13 +74,13 @@
     <!-- aside는 본문과 관련된 부가 정보나 사이드바를 담는다. -->
     <aside>
         <h2>🌤️ 실시간 정보</h2>
-        <p>도시를 선택하면 현재 날씨를 확인할 수 있습니다. 📍</p>
+        <p>도시를 선택하면 현재 날씨와 대기 환경을 확인할 수 있습니다. 📍</p>
         <!-- time의 datetime은 기계가 읽을 수 있는 날짜 형식이다. -->
         <p>현재 날짜: <time datetime="2026-07-15">2026년 7월 15일</time></p>
 
         <!-- 261~263페이지 과제: DOM/이벤트, 비동기 호출, ES 모듈 분리 실습이다. -->
         <section class="realtime-weather" aria-labelledby="weather-title">
-            <h3 id="weather-title">🌦️ 실시간 세계 날씨</h3>
+            <h3 id="weather-title">🌦️ 실시간 날씨·대기</h3>
 
             <!-- label의 for와 select의 id를 연결하면 입력 목적을 쉽게 알 수 있다. -->
             <label for="city-select">날씨를 확인할 도시</label>
@@ -104,7 +102,7 @@
 
             <!-- aria-live는 내용이 바뀌었음을 화면 읽기 프로그램에 알려 준다. -->
             <div id="weather-box" aria-live="polite">
-                도시의 날씨를 불러오는 중입니다.
+                도시의 날씨와 대기 정보를 불러오는 중입니다.
             </div>
         </section>
 
