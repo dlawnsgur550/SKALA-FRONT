@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+     <!-- link는 현재 HTML과 외부 CSS 파일을 연결한다. ../는 상위 폴더를 뜻한다. -->
      <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
+    <!-- viewport 설정은 모바일 화면 너비에 맞게 문서를 표시한다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title은 본문이 아니라 브라우저 탭에 표시되는 제목이다. -->
     <title>Welcome SKALA</title>
 </head>
 <body>
+    <!-- 같은 class는 여러 문서와 요소에서 재사용할 수 있다. -->
     <div class="container">
-    <header>
+    <!-- header는 페이지의 머리말 영역이다. -->
+    <!-- 미션 6: 이 제목에는 페이지가 열릴 때 페이드인 애니메이션이 적용된다. -->
+    <header class="home-header">
         <h1>나의 SKALA 유니버스 🚀</h1>
         <p>프로필, 학습 내용, 여행 기록을 모아 둔 개인 메인 Hub입니다.</p>
     </header>
 
+    <!-- nav는 다른 페이지로 이동하는 주요 메뉴 영역이다. -->
     <nav>
         <h2>📁 바로가기 메뉴</h2>
         <ul>
+            <!-- href에는 이동할 문서의 상대 경로를 적는다. -->
             <li><a href="myProfile.html">소개 (Profile)</a></li>
             <li><a href="myClass.html">수업 시간표 (Class)</a></li>
             <li><a href="myHoliday.html">휴일 계획 (Holiday)</a></li>
@@ -26,9 +34,13 @@
 
     <hr>
 
+    <!-- 미션 4: main과 aside를 한 부모로 묶어 CSS Grid의 2열로 배치한다. -->
+    <div class="content-layout">
+    <!-- main은 페이지마다 하나만 사용하며 핵심 본문을 담는다. -->
     <main>
         <h2>📌 오늘의 주요 소식</h2>
 
+        <!-- article은 하나의 독립적인 글이나 소식 단위이다. -->
         <article>
             <h3>최근 공지 및 업데이트</h3>
             <h4>[업데이트] 여행 앨범에 미디어 추가!</h4>
@@ -39,14 +51,18 @@
             <p>작성일: 2026년 7월 15일</p>
         </article>
 
+        <!-- section은 제목을 가진 주제별 콘텐츠 묶음이다. -->
         <section>
             <h3>📸 이달의 베스트 컷</h3>
+            <!-- figure는 이미지와 설명을 하나의 콘텐츠로 묶는다. -->
             <figure>
                 <!-- 아래 파일명을 media 폴더의 실제 이미지 파일명으로 변경하세요. -->
+                <!-- img는 종료 태그가 없으며 src는 경로, alt는 대체 설명이다. -->
                 <img
                     src="../media/asakusa.jpg"
                     alt="이달의 여행 베스트 컷"
                 >
+                <!-- figcaption은 figure의 설명글이다. -->
                 <figcaption>여행 중 만난 가장 인상적인 풍경</figcaption>
             </figure>
         </section>
@@ -57,9 +73,11 @@
         </section>
     </main>
 
+    <!-- aside는 본문과 관련된 부가 정보나 사이드바를 담는다. -->
     <aside>
         <h2>🌤️ 실시간 정보</h2>
         <p>현재 위치: 대한민국 서울특별시 📍</p>
+        <!-- time의 datetime은 기계가 읽을 수 있는 날짜 형식이다. -->
         <p>현재 날짜: <time datetime="2026-07-15">2026년 7월 15일</time></p>
 
         <h3>🔔 학습 정보</h3>
@@ -70,9 +88,11 @@
             <a href="https://developer.mozilla.org/ko/docs/Web/HTML">MDN HTML 문서</a>
         </p>
     </aside>
+    </div>
 
     <hr>
 
+    <!-- footer는 저작권, 연락처 같은 페이지의 마무리 정보를 담는다. -->
     <footer>
         <p><small>© 2026 SKALA-FRONT 포트폴리오</small></p>
     </footer>
