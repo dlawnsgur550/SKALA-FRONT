@@ -1,139 +1,410 @@
 /*
- * style.css는 여러 HTML 문서가 함께 사용하는 외부 스타일시트이다.
- * HTML의 <link rel="stylesheet" href="../css/style.css">가 이 파일을 불러온다.
- * CSS의 기본 문법은 "선택자 { 속성: 값; }"이다.
+ * Toss의 디자인 감도를 참고한 SKALA-FRONT 공통 스타일이다.
+ * 로고나 화면을 복제하지 않고, 명확한 정보 계층·넉넉한 여백·회색과 파랑 중심의
+ * 디자인 원칙만 포트폴리오에 맞게 적용했다.
  */
 
-/* @import는 외부 글꼴을 가져온다. 반드시 다른 스타일 규칙보다 먼저 작성한다. */
-@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
+/* :root에는 여러 곳에서 재사용할 색상과 크기를 CSS 변수로 모아 둔다. */
+:root {
+    --grey-50: #f9fafb;
+    --grey-100: #f2f4f6;
+    --grey-200: #e5e8eb;
+    --grey-300: #d1d6db;
+    --grey-400: #b0b8c1;
+    --grey-500: #8b95a1;
+    --grey-600: #6b7684;
+    --grey-700: #4e5968;
+    --grey-800: #333d4b;
+    --grey-900: #191f28;
+    --blue-50: #e8f3ff;
+    --blue-100: #c9e2ff;
+    --blue-500: #3182f6;
+    --blue-600: #2272eb;
+    --blue-700: #1b64da;
+    --red-50: #ffeeee;
+    --red-600: #e42939;
+    --white: #ffffff;
+    --radius-small: 12px;
+    --radius-medium: 20px;
+    --radius-large: 30px;
+    --shadow-surface: 0 8px 30px rgba(2, 9, 19, 0.07);
+    --shadow-hover: 0 14px 34px rgba(2, 9, 19, 0.12);
+}
 
-/* *는 문서 안의 모든 요소를 선택하는 전체 선택자이다. */
+/* 전체 선택자는 모든 요소가 같은 크기 계산 방식을 사용하게 한다. */
 * {
-    /* width에 padding과 border까지 포함시켜 크기 계산을 쉽게 만든다. */
     box-sizing: border-box;
 }
 
-/* body 태그 선택자: 페이지 전체에 공통으로 상속되는 기본 모양을 지정한다. */
+html {
+    /* 페이지 안의 링크 이동이나 스크롤을 부드럽게 연결한다. */
+    scroll-behavior: smooth;
+}
+
 body {
-    /* 첫 글꼴을 사용할 수 없으면 cursive 계열 글꼴을 대신 사용한다. */
-    font-family: "Grandiflora One", cursive;
-    font-weight: 600;
-    font-style: normal;
-    /* line-height는 줄 사이의 높이이며 단위 없는 1.2는 글자 크기의 1.2배이다. */
-    line-height: 1.2;
-    color: #333333;
-    background-color: #fcfcfc;
-    font-size: 20px;
-    /* 브라우저의 기본 바깥 여백을 제거한다. */
     margin: 0;
-    /* 상하 32px, 좌우 20px의 안쪽 여백이다. */
-    padding: 32px 20px;
+    padding: 48px 24px;
+    color: var(--grey-900);
+    background-color: var(--grey-100);
+    /* 운영체제의 산세리프 글꼴을 우선 사용해 단정하고 빠르게 표시한다. */
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
+        "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.65;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* .container는 class="container"인 모든 요소를 선택하는 클래스 선택자이다. */
+/* 드래그해서 선택한 글자에도 대표 파란색을 연하게 사용한다. */
+::selection {
+    color: var(--grey-900);
+    background-color: var(--blue-100);
+}
+
+/* 모든 페이지의 흰색 콘텐츠 표면이다. */
 .container {
-    /* 둘 중 작은 값을 선택하여 화면보다 넓어지지 않게 한다. */
-    width: min(100%, 1100px);
-    /* 좌우 margin을 auto로 두면 고정 폭 박스가 화면 가운데 놓인다. */
+    width: min(100%, 1180px);
     margin: 0 auto;
-    padding: 32px;
-    background-color: #ffffff;
-    /* border 문법: 두께 선모양 색상 */
-    border: 1px solid #dfe7e5;
-    border-radius: 14px;
-    /* x축, y축, 흐림 정도, 색상 순서의 그림자이다. */
-    box-shadow: 0 8px 24px rgba(30, 70, 65, 0.08);
+    padding: clamp(32px, 5vw, 64px);
+    background-color: var(--white);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-surface);
 }
 
-/* 쉼표를 사용하면 h1과 h2에 같은 규칙을 한 번에 적용할 수 있다. */
+/* 제목은 배경 장식을 줄이고 크기·굵기·여백으로 단계가 보이게 한다. */
 h1,
-h2 {
-    color: #164b60;
-    padding: 14px 18px;
-    border-left: 6px solid #1aa78f;
-    background-color: #f0f7f6;
+h2,
+h3,
+h4 {
+    margin-top: 0;
+    color: var(--grey-900);
+    line-height: 1.35;
+    letter-spacing: -0.035em;
 }
 
-/* h1에만 적용되는 추가 규칙이다. em은 현재 글자 크기를 기준으로 한다. */
 h1 {
-    font-size: 1.7em;
-    border-bottom: 3px solid #164b60;
+    margin-bottom: 24px;
+    font-size: clamp(34px, 4vw, 50px);
+    font-weight: 800;
 }
 
-/* h2는 h1보다 작은 단계의 제목이다. */
 h2 {
-    font-size: 1.25em;
+    margin-bottom: 20px;
+    font-size: clamp(24px, 2.4vw, 30px);
+    font-weight: 750;
 }
 
-/* 세 번째 단계 제목의 글자색이다. */
 h3 {
-    color: #167d72;
+    margin-bottom: 14px;
+    font-size: 21px;
+    font-weight: 700;
 }
 
-/* 모든 <a> 링크의 기본 모양이다. */
+h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+p {
+    color: var(--grey-700);
+}
+
+strong,
+dt {
+    color: var(--grey-900);
+}
+
+small,
+figcaption {
+    color: var(--grey-500);
+}
+
+/* mark는 형광색 대신 연한 파랑 배경을 사용한다. */
+mark {
+    padding: 2px 6px;
+    color: var(--blue-700);
+    background-color: var(--blue-50);
+    border-radius: 6px;
+}
+
+/* 페이지의 첫 제목 아래에 얇은 구분선을 두어 시작점을 만든다. */
+body > .container > h1,
+body > .container > h2:first-child {
+    margin-bottom: 36px;
+    padding: 10px 0 30px;
+    border-bottom: 1px solid var(--grey-200);
+}
+
+/* 링크는 기본 파랑을 사용하고 밑줄은 상호작용할 때만 보이게 한다. */
 a {
-    color: #087f9c;
+    color: var(--blue-600);
+    font-weight: 600;
     text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
-/* :hover는 마우스를 올렸을 때, :focus는 키보드로 선택했을 때 적용된다. */
 a:hover,
-a:focus {
-    color: #c14f77;
+a:focus-visible {
+    color: var(--blue-700);
     text-decoration: underline;
 }
 
-/* 미션 4: nav의 ul을 Flex Container로 만들어 메뉴를 가로로 배치한다. */
+/* 키보드 사용자가 현재 선택한 요소를 분명하게 확인하도록 한다. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--blue-100);
+    outline-offset: 3px;
+}
+
+hr {
+    margin: 42px 0;
+    border: 0;
+    border-top: 1px solid var(--grey-200);
+}
+
+/* index와 여행 페이지의 header를 넓고 부드러운 Hero 영역으로 만든다. */
+header {
+    margin-bottom: 32px;
+    padding: clamp(34px, 5vw, 56px);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--blue-50) 0%, #f6faff 58%, var(--white) 100%);
+    border-radius: 28px;
+}
+
+header h1 {
+    max-width: 760px;
+    margin-bottom: 16px;
+}
+
+header p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--grey-600);
+    font-size: 19px;
+}
+
+/* 메뉴는 하나의 연한 회색 패널 안에 간결한 탭처럼 배치한다. */
+nav {
+    margin-bottom: 36px;
+}
+
+nav h2 {
+    margin-bottom: 12px;
+    color: var(--grey-600);
+    font-size: 16px;
+    letter-spacing: -0.02em;
+}
+
 nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-between;
+    gap: 6px;
     margin: 0;
-    padding: 0;
+    padding: 8px;
     list-style: none;
+    background-color: var(--grey-100);
+    border-radius: 18px;
 }
 
-/* 미션 6: 메뉴의 배경색과 글자색이 0.3초 동안 부드럽게 변한다. */
+nav li {
+    flex: 1 1 150px;
+}
+
 nav a {
     display: block;
-    padding: 10px 14px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 13px 15px;
+    color: var(--grey-700);
+    border-radius: var(--radius-small);
+    font-size: 15px;
+    font-weight: 650;
+    text-align: center;
 }
 
 nav a:hover,
-nav a:focus {
-    color: #ffffff;
-    background-color: #1aa78f;
+nav a:focus-visible {
+    color: var(--blue-700);
+    background-color: var(--white);
+    box-shadow: 0 4px 14px rgba(2, 9, 19, 0.06);
     text-decoration: none;
+    transform: translateY(-1px);
 }
 
-/* 미션 4: index의 본문은 넓게, aside는 좁게 사용하는 2열 Grid이다. */
+/* 메인 소식과 부가 정보를 비대칭 2열 Grid로 구성한다. */
 .content-layout {
     display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(240px, 1fr);
-    gap: 24px;
+    grid-template-columns: minmax(0, 1.75fr) minmax(280px, 0.9fr);
+    gap: 28px;
     align-items: start;
 }
 
+.content-layout main {
+    min-width: 0;
+}
+
+.content-layout main > h2,
+.content-layout aside > h2 {
+    margin-bottom: 24px;
+}
+
+/* 각 소식 단위는 선과 여백만 사용해 가볍게 구분한다. */
+main > article,
+main > section {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--grey-200);
+}
+
+main > article:first-of-type,
+main > section:first-of-type {
+    padding-top: 8px;
+}
+
+main > article:last-child,
+main > section:last-child {
+    border-bottom: 0;
+}
+
+.content-layout article {
+    margin-bottom: 12px;
+    padding: 26px;
+    background-color: var(--grey-50);
+    border: 0;
+    border-radius: var(--radius-medium);
+}
+
+.content-layout article p:last-child {
+    margin-bottom: 0;
+    color: var(--grey-500);
+    font-size: 14px;
+}
+
+/* figure의 이미지와 설명을 하나의 큰 콘텐츠 카드처럼 보이게 한다. */
+figure {
+    margin: 0;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+figcaption {
+    padding-top: 12px;
+    font-size: 14px;
+}
+
+/* aside는 회색 카드로 분리하고 긴 화면에서만 자연스럽게 따라오게 한다. */
 .content-layout aside {
+    position: sticky;
+    top: 24px;
+    padding: 28px;
+    background-color: var(--grey-50);
+    border-radius: 24px;
+}
+
+.content-layout aside > p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.content-layout aside > h3 {
+    margin-top: 30px;
+}
+
+/* 실시간 날씨 선택창과 결과는 사이드바 안의 독립된 카드이다. */
+.realtime-weather {
+    margin: 28px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-200);
+}
+
+.realtime-weather label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--grey-600);
+    font-size: 14px;
+    font-weight: 650;
+}
+
+#city-select {
+    width: 100%;
+}
+
+#weather-box {
+    min-height: 154px;
+    margin-top: 14px;
     padding: 18px;
-    background-color: #f6faf9;
-    border: 1px solid #dfe7e5;
-    border-radius: 12px;
+    background-color: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(2, 9, 19, 0.05);
+    font-size: 14px;
 }
 
-/* 미션 6: index를 처음 열면 헤더 제목이 서서히 나타난다. */
+#weather-box p {
+    margin: 8px 0;
+}
+
+.weather-message {
+    color: var(--grey-600);
+    font-weight: 650;
+}
+
+.weather-error {
+    color: var(--red-600);
+}
+
+/* JavaScript 실습 버튼은 동일한 크기와 파랑 계열로 통일한다. */
+.mini-games {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-200);
+}
+
+.mini-game-buttons {
+    display: grid;
+    gap: 10px;
+}
+
+.mini-game-buttons button {
+    width: 100%;
+    padding: 13px 15px;
+    color: var(--white);
+    background-color: var(--blue-600);
+    border: 0;
+    border-radius: 14px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(34, 114, 235, 0.16);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mini-game-buttons button:hover,
+.mini-game-buttons button:focus-visible {
+    background-color: var(--blue-700);
+    box-shadow: 0 8px 20px rgba(34, 114, 235, 0.24);
+    transform: translateY(-2px);
+}
+
+/* 첫 화면의 제목이 빠르고 차분하게 나타나는 애니메이션이다. */
 .home-header h1 {
-    animation: title-fade-in 0.9s ease-out both;
+    animation: title-fade-in 0.65s ease-out both;
 }
 
-/* @keyframes는 애니메이션의 시작 상태와 종료 상태를 정의한다. */
 @keyframes title-fade-in {
     from {
         opacity: 0;
-        transform: translateY(-18px);
+        transform: translateY(14px);
     }
 
     to {
@@ -142,103 +413,180 @@ nav a:focus {
     }
 }
 
-/* 이미지와 영상이 부모 영역보다 넓어지지 않게 한다. */
+/* 이미지와 영상은 부모 너비를 넘지 않는다. */
 img,
 video {
     max-width: 100%;
     height: auto;
 }
 
-/* myTrip.html의 여행지 문단에 적용하는 리뷰 카드 클래스이다. */
-.trip-card {
-    /* margin은 박스 바깥쪽, padding은 박스 안쪽 여백이다. */
-    margin: 24px 0;
-    padding: 20px;
-    background-color: #f8fbfa;
-    border: 1px solid #cddedb;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(30, 70, 65, 0.08);
-    /* 미션 6: 위치와 그림자의 변화를 부드럽게 연결한다. */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 공백은 .trip-card 내부에 있는 img만 선택한다는 뜻이다. */
-.trip-card img {
-    /* img를 블록 요소처럼 만들어 한 줄을 차지하게 한다. */
+audio,
+video {
     display: block;
-    margin-bottom: 12px;
-    border-radius: 8px;
+    width: 100%;
 }
 
-/* 미션 4: repeat(3, 1fr)은 같은 너비의 열을 세 개 만든다. */
+video {
+    background-color: var(--grey-900);
+    border-radius: 24px;
+}
+
+/* 여행 사진은 3열 Grid와 부드러운 회색 카드로 보여 준다. */
 .trip-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: 18px;
 }
 
-.trip-grid .trip-card {
+.trip-card {
     margin: 0;
+    padding: 14px;
+    color: var(--grey-800);
+    background-color: var(--grey-50);
+    border-radius: 24px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
-.trip-grid .trip-card img {
+.trip-card img {
+    display: block;
     width: 100%;
+    margin-bottom: 14px;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    border-radius: 18px;
 }
 
-/* 미션 6: 카드가 8px 위로 이동하고 그림자가 더 진해진다. */
 .trip-card:hover,
 .trip-card:focus-within {
-    transform: translateY(-8px);
-    box-shadow: 0 14px 28px rgba(30, 70, 65, 0.2);
+    background-color: var(--blue-50);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
 }
 
-/* 시간표 전체의 크기와 테두리 표현을 설정한다. */
+/* 표는 진한 선 대신 행 배경과 얇은 구분선으로 정보를 나눈다. */
 table {
+    display: block;
     width: 100%;
-    /* 인접한 셀의 이중 테두리를 하나로 합친다. */
-    border-collapse: collapse;
-    font-size: 0.65em;
-    background-color: #ffffff;
+    overflow-x: auto;
+    color: var(--grey-800);
+    background-color: var(--white);
+    border: 1px solid var(--grey-200);
+    border-spacing: 0;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
-/* 모든 표 제목 셀(th)과 데이터 셀(td)에 함께 적용한다. */
+thead,
+tbody {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
 th,
 td {
-    padding: 13px 10px;
-    border: 1px solid #cbd7d5;
+    padding: 16px 12px;
+    border: 0;
+    border-right: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
     text-align: center;
     vertical-align: middle;
 }
 
-/* th는 표의 머리글 셀이다. */
+th:last-child,
+td:last-child {
+    border-right: 0;
+}
+
+thead tr:last-child th,
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
 th {
-    color: #ffffff;
-    background-color: #167d72;
+    color: var(--blue-700);
+    background-color: var(--blue-50);
+    font-weight: 750;
 }
 
-/* :nth-child(even)은 tbody 안의 짝수 번째 행을 선택한다. */
 tbody tr:nth-child(even) {
-    background-color: #f1f7f6;
+    background-color: var(--grey-50);
 }
 
-/* fieldset은 서로 관련된 폼 입력 항목을 묶는 상자이다. */
+tbody td:first-child {
+    color: var(--grey-900);
+    font-weight: 700;
+}
+
+/* 기본 목록도 회색 카드로 묶어 다른 페이지와 같은 리듬을 만든다. */
+.container > ul,
+.container > ol {
+    margin: 0 0 36px;
+    padding: 24px 28px 24px 48px;
+    color: var(--grey-700);
+    background-color: var(--grey-50);
+    border-radius: var(--radius-medium);
+}
+
+.container > ul li,
+.container > ol li {
+    padding: 6px 0;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+}
+
+dt {
+    margin: 0;
+    padding: 22px 22px 0;
+    background-color: var(--grey-50);
+    border-radius: 20px 20px 0 0;
+    font-size: 18px;
+    font-weight: 750;
+}
+
+dd {
+    margin: -16px 0 0;
+    padding: 38px 22px 22px;
+    color: var(--grey-700);
+    background-color: var(--grey-50);
+    border-radius: 0 0 20px 20px;
+}
+
+/* 폼 그룹은 테두리 대신 옅은 배경과 둥근 모서리로 구분한다. */
 fieldset {
-    margin: 24px 0;
-    padding: 24px;
-    border: 1px solid #cbd7d5;
-    border-radius: 12px;
+    margin: 28px 0;
+    padding: 28px;
+    background-color: var(--grey-50);
+    border: 0;
+    border-radius: 24px;
 }
 
-/* legend는 fieldset 테두리에 표시되는 그룹 제목이다. */
 legend {
-    padding: 0 12px;
-    color: #164b60;
-    font-weight: bold;
+    padding: 0 8px;
+    color: var(--grey-900);
+    font-size: 20px;
+    font-weight: 750;
 }
 
-/* [type="..."]은 특정 속성값을 가진 요소만 고르는 속성 선택자이다. */
+fieldset > p {
+    margin: 22px 0;
+}
+
+fieldset > p > label[for] {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--grey-800);
+    font-size: 15px;
+    font-weight: 650;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -246,134 +594,226 @@ select,
 textarea {
     width: 100%;
     padding: 13px 15px;
-    border: 1px solid #b8c8c5;
-    border-radius: 7px;
-    background-color: #ffffff;
-    /* inherit는 부모가 사용하는 글꼴 설정을 물려받는다는 뜻이다. */
+    color: var(--grey-900);
+    background-color: var(--white);
+    border: 1px solid var(--grey-300);
+    border-radius: 14px;
     font: inherit;
-    font-size: 0.72em;
+    font-size: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 여러 줄 입력창은 세로 크기만 사용자가 조절할 수 있다. */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    min-height: 52px;
+}
+
 textarea {
     min-height: 170px;
     resize: vertical;
 }
 
-/* #은 id 선택자이며 문서에서 하나뿐인 요소를 정밀하게 선택한다. */
-#userEmail {
-    width: min(45%, 340px);
+input::placeholder,
+textarea::placeholder {
+    color: var(--grey-400);
 }
 
-/* 이메일 도메인 선택창은 내용에 맞는 폭을 사용한다. */
-#emailDomain {
-    width: auto;
-    min-width: 160px;
-}
-
-/* '직접 입력'을 골랐을 때 JavaScript가 보여 주는 입력창이다. */
-#customEmailDomain {
-    width: min(35%, 260px);
-}
-
-/* 사용자가 입력 요소를 선택했을 때 현재 위치를 쉽게 알아보게 한다. */
-input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
 select:focus,
 textarea:focus {
-    outline: 3px solid rgba(26, 167, 143, 0.22);
-    border-color: #1aa78f;
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px var(--blue-50);
+    outline: none;
 }
 
-/* 제출 버튼과 초기화 버튼이 공유하는 공통 스타일이다. */
+input[type="radio"],
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    accent-color: var(--blue-600);
+    vertical-align: -3px;
+}
+
+/* 이메일 앞부분과 도메인 선택창은 넓은 화면에서 한 줄에 놓인다. */
+#userEmail {
+    width: min(42%, 340px);
+}
+
+#emailDomain {
+    width: auto;
+    min-width: 170px;
+}
+
+#customEmailDomain {
+    width: min(34%, 260px);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* 제출은 대표 파랑, 초기화는 중립 회색으로 역할을 구분한다. */
 .btn-submit,
 .btn-reset,
 input[type="submit"],
 input[type="reset"] {
-    padding: 14px 22px;
+    min-height: 52px;
+    padding: 13px 22px;
+    color: var(--white);
     border: 0;
-    border-radius: 7px;
-    color: #ffffff;
+    border-radius: 14px;
     font: inherit;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 750;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease,
-        transform 0.3s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
-/* 제출 버튼만 초록색으로 지정한다. */
 .btn-submit,
 input[type="submit"] {
-    background-color: #1aa78f;
+    background-color: var(--blue-600);
+    box-shadow: 0 7px 16px rgba(34, 114, 235, 0.2);
 }
 
-/* 초기화 버튼만 회색으로 지정한다. */
 .btn-reset,
 input[type="reset"] {
-    background-color: #98a3a8;
+    color: var(--grey-700);
+    background-color: var(--grey-200);
 }
 
-/* 마우스를 올리면 제출 버튼 색을 더 진하게 바꾼다. */
 .btn-submit:hover,
 input[type="submit"]:hover {
-    background-color: #128372;
-}
-
-/* 마우스를 올리면 초기화 버튼 색을 더 진하게 바꾼다. */
-.btn-reset:hover,
-input[type="reset"]:hover {
-    background-color: #737f84;
-}
-
-.btn-submit:hover,
-.btn-reset:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
+    background-color: var(--blue-700);
     transform: translateY(-2px);
 }
 
-/* 미션 5: 화면 너비가 786px 이하이면 여러 열을 세로 1열로 바꾼다. */
-@media (max-width: 786px) {
+.btn-reset:hover,
+input[type="reset"]:hover {
+    color: var(--grey-900);
+    background-color: var(--grey-300);
+    transform: translateY(-2px);
+}
+
+footer {
+    margin-top: 46px;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-200);
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* 태블릿에서는 2열 콘텐츠와 3열 여행 카드를 줄인다. */
+@media (max-width: 900px) {
     body {
-        font-size: 22px;
-        padding: 12px;
+        padding: 24px 16px;
+    }
+
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .content-layout aside {
+        position: static;
+    }
+
+    .trip-grid,
+    dl {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 모바일에서는 카드가 화면 전체를 사용하고 모든 열을 한 줄로 바꾼다. */
+@media (max-width: 640px) {
+    body {
+        padding: 0;
+        background-color: var(--white);
+        font-size: 16px;
     }
 
     .container {
-        padding: 18px;
+        padding: 28px 20px 40px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    header {
+        padding: 30px 24px;
+        border-radius: 22px;
+    }
+
+    header p {
+        font-size: 16px;
     }
 
     nav ul {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
-    nav a {
+    nav li {
         width: 100%;
     }
 
-    .content-layout,
-    .trip-grid {
+    nav a {
+        text-align: left;
+    }
+
+    .content-layout aside,
+    fieldset {
+        padding: 22px;
+    }
+
+    .trip-grid,
+    dl {
         grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        min-width: 118px;
+        padding: 13px 10px;
+    }
+
+    th:first-child,
+    td:first-child {
+        min-width: 108px;
     }
 
     #userEmail,
     #emailDomain,
     #customEmailDomain {
-        /* 작은 화면에서는 이메일 관련 입력창을 한 줄씩 배치한다. */
         width: 100%;
         margin: 5px 0;
     }
 
-    table {
-        /* 좁은 화면에서 시간표가 지나치게 넓어지는 것을 줄인다. */
-        font-size: 0.52em;
+    .btn-submit,
+    .btn-reset,
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin: 5px 0;
     }
 }
 
-/* 사용자가 운영체제에서 '동작 줄이기'를 선택했다면 모션을 최소화한다. */
+/* 운영체제에서 '동작 줄이기'를 선택한 사용자는 모션을 거의 보지 않는다. */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
+        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;

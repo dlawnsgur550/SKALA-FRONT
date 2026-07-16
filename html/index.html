@@ -63,7 +63,7 @@
                     alt="이달의 여행 베스트 컷"
                 >
                 <!-- figcaption은 figure의 설명글이다. -->
-                <figcaption>여행 중 만난 가장 인상적인 풍경</figcaption>
+                <figcaption>아사쿠사 센소지</figcaption>
             </figure>
         </section>
 
@@ -76,9 +76,37 @@
     <!-- aside는 본문과 관련된 부가 정보나 사이드바를 담는다. -->
     <aside>
         <h2>🌤️ 실시간 정보</h2>
-        <p>현재 위치: 대한민국 서울특별시 📍</p>
+        <p>도시를 선택하면 현재 날씨를 확인할 수 있습니다. 📍</p>
         <!-- time의 datetime은 기계가 읽을 수 있는 날짜 형식이다. -->
         <p>현재 날짜: <time datetime="2026-07-15">2026년 7월 15일</time></p>
+
+        <!-- 261~263페이지 과제: DOM/이벤트, 비동기 호출, ES 모듈 분리 실습이다. -->
+        <section class="realtime-weather" aria-labelledby="weather-title">
+            <h3 id="weather-title">🌦️ 실시간 세계 날씨</h3>
+
+            <!-- label의 for와 select의 id를 연결하면 입력 목적을 쉽게 알 수 있다. -->
+            <label for="city-select">날씨를 확인할 도시</label>
+            <select id="city-select">
+                <!-- data-* 속성은 JavaScript에서 사용할 추가 정보를 저장한다. -->
+                <option value="seoul" data-lat="37.5665" data-lon="126.9780">
+                    대한민국 서울 KR
+                </option>
+                <option value="gwangju" data-lat="35.1595" data-lon="126.8526">
+                    대한민국 광주 KR
+                </option>
+                <option value="tokyo" data-lat="35.6762" data-lon="139.6503">
+                    일본 도쿄 JP
+                </option>
+                <option value="paris" data-lat="48.8566" data-lon="2.3522">
+                    프랑스 파리 FR
+                </option>
+            </select>
+
+            <!-- aria-live는 내용이 바뀌었음을 화면 읽기 프로그램에 알려 준다. -->
+            <div id="weather-box" aria-live="polite">
+                도시의 날씨를 불러오는 중입니다.
+            </div>
+        </section>
 
         <h3>🔔 학습 정보</h3>
         <p>현재 과정: SKALA Full-stack Engineering</p>
@@ -87,6 +115,17 @@
             추천 학습 사이트:
             <a href="https://developer.mozilla.org/ko/docs/Web/HTML">MDN HTML 문서</a>
         </p>
+
+        <!-- 230~232페이지 과제: 외부 JavaScript 함수들을 실행하는 버튼 영역이다. -->
+        <section class="mini-games">
+            <h3>🎮 자바스크립트 천국</h3>
+            <div class="mini-game-buttons">
+                <!-- type="button"은 폼 제출 기능이 없는 일반 실행 버튼을 뜻한다. -->
+                <button type="button" onclick="playUpDown()">업다운 게임 🚀</button>
+                <button type="button" onclick="calculateGrade()">성적 계산기 📊</button>
+                <button type="button" onclick="showMyBag()">내 가방 보기 🎒</button>
+            </div>
+        </section>
     </aside>
     </div>
 
@@ -97,5 +136,12 @@
         <p><small>© 2026 SKALA-FRONT 포트폴리오</small></p>
     </footer>
 </div>
+
+<!-- 외부 JavaScript는 화면 요소를 모두 읽은 뒤 실행되도록 body 끝에서 불러온다. -->
+<script src="../script/upDown.js"></script>
+<script src="../script/grade.js"></script>
+<script src="../script/bag.js"></script>
+<!-- type="module"을 사용하면 다른 JavaScript 파일의 함수를 import할 수 있다. -->
+<script type="module" src="../script/realtimeInfo.js"></script>
 </body>
 </html>
