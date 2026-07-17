@@ -6,7 +6,9 @@ export async function getCurrentAirQuality(latitude, longitude) {
     const apiUrl =
         `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}` +
         `&longitude=${longitude}` +
-        "&current=pm2_5,pm10,us_aqi,uv_index";
+        "&current=pm2_5,pm10,us_aqi,uv_index" +
+        // 선택한 도시의 현지 시각을 기준으로 대기 데이터를 받는다.
+        "&timezone=auto";
 
     const response = await fetch(apiUrl);
 
@@ -18,6 +20,8 @@ export async function getCurrentAirQuality(latitude, longitude) {
 
     return {
         current: airQualityData.current,
-        units: airQualityData.current_units
+        units: airQualityData.current_units,
+        timezone: airQualityData.timezone,
+        timezoneAbbreviation: airQualityData.timezone_abbreviation
     };
 }

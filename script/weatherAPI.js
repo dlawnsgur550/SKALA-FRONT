@@ -6,7 +6,9 @@ export async function getCurrentWeather(latitude, longitude) {
     const apiUrl =
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}` +
         `&longitude=${longitude}` +
-        "&current=temperature_2m,relative_humidity_2m";
+        "&current=temperature_2m,relative_humidity_2m" +
+        // timezone=auto는 선택한 도시 좌표에 맞는 현지 시각을 응답하게 한다.
+        "&timezone=auto";
 
     // fetch()는 서버에 요청하고, await는 응답이 올 때까지 기다린다.
     const response = await fetch(apiUrl);
@@ -22,6 +24,8 @@ export async function getCurrentWeather(latitude, longitude) {
     // 화면 모듈에서 필요한 현재 날씨와 단위 정보만 돌려준다.
     return {
         current: weatherData.current,
-        units: weatherData.current_units
+        units: weatherData.current_units,
+        timezone: weatherData.timezone,
+        timezoneAbbreviation: weatherData.timezone_abbreviation
     };
 }
