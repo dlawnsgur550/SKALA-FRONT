@@ -25,14 +25,20 @@
 - 화면 너비에 따라 2열 또는 1열로 변경되는 레이아웃
 - 회색과 파랑을 중심으로 구성한 공통 카드 스타일
 
-![SKALA-FRONT 메인 화면](docs/images/01-main.png)
+<p align="center">
+  <img src="docs/images/01-main.png" alt="SKALA-FRONT 메인 화면" width="520">
+</p>
 
 ### 2. 오늘의 할 일
 
 - 할 일 추가, 완료 체크, 개별 삭제
 - 완료 개수와 진행률 표시
 - 오늘 목록을 브라우저에 저장하고 날짜가 바뀌면 새 목록으로 전환
-![오늘은 뭐 하지](docs/images/09-todo.png)
+
+<p align="center">
+  <img src="docs/images/09-todo.png" alt="오늘의 할 일" width="680">
+</p>
+
 ### 3. 날씨·대기 정보
 
 - 서울, 광주, 도쿄, 파리의 기온과 습도 표시
@@ -40,14 +46,18 @@
 - 선택 도시의 현지 시각 적용, 10분 자동 갱신과 수동 새로고침
 - 로딩 상태와 오류 안내
 
-![날씨 좋았으면 좋겠다](docs/images/02-weather-air.png)
+<p align="center">
+  <img src="docs/images/02-weather-air.png" alt="날씨와 대기 정보" width="420">
+</p>
 
 ### 4. 프로필
 
 - 좋아하는 음식과 올해의 목표 목록
 - 설명 목록을 이용한 관심사와 특징 정리
 
-![나 이런 사람이에요](docs/images/03-profile.png)
+<p align="center">
+  <img src="docs/images/03-profile.png" alt="프로필 화면" width="520">
+</p>
 
 ### 5. 강의 시간표와 휴일 계획
 
@@ -55,15 +65,19 @@
 - 시간대별 휴일 활동 구성
 - 작은 화면에서 시간표 좌우 스크롤 지원
 
-![강의 시간표](docs/images/04-class.png)
-![휴일 계획](docs/images/05-holiday.png)
+<p align="center">
+  <img src="docs/images/04-class.png" alt="강의 시간표" width="390">
+  <img src="docs/images/05-holiday.png" alt="휴일 계획" width="390">
+</p>
 
 ### 6. 여행 앨범과 미디어
 
 - 여행 사진을 반응형 Grid 카드로 배치
 - 오디오와 비디오 재생 기능
 
-![여기어때와 저기어때](docs/images/06-trip.png)
+<p align="center">
+  <img src="docs/images/06-trip.png" alt="여행 앨범과 미디어" width="520">
+</p>
 
 ### 7. 회원가입 Form
 
@@ -71,7 +85,9 @@
 - 이메일 도메인 직접 입력
 - HTML Form 유효성 검사 속성 적용
 
-![회원가입이 안되는 회원가입탭](docs/images/07-signup.png)
+<p align="center">
+  <img src="docs/images/07-signup.png" alt="회원가입 화면" width="520">
+</p>
 
 ### 8. JavaScript 미니 기능
 
@@ -79,7 +95,9 @@
 - 점수에 따른 성적 계산기
 - 객체로 만든 가방 속 물품 확인
 
-![JavaScript 미니 기능](docs/images/08-javascript.png)
+<p align="center">
+  <img src="docs/images/08-javascript.png" alt="JavaScript 미니 기능" width="520">
+</p>
 
 ## 🛠️ 사용 기술
 
