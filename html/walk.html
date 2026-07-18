@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도쿄 산책 노트</title>
+</head>
+<body>
+    <div class="container walk-container">
+        <nav class="page-home-nav" aria-label="Page navigation">
+            <a href="index.html">← Main Hub</a>
+        </nav>
+
+        <header class="walk-hero">
+            <p class="walk-hero-kicker">TOKYO WALK NOTE</p>
+            <h1>🚶 천천히 걷는 도쿄</h1>
+            <p>
+                오래 머물고 싶은 거리와 직접 걸어 본 코스를
+                짧은 글로 기록하는 산책 블로그입니다.
+            </p>
+        </header>
+
+        <main>
+            <section class="walk-blog" aria-labelledby="walk-blog-title">
+                <div class="walk-blog-heading">
+                    <div>
+                        <p class="walk-section-eyebrow">WALK COLLECTION</p>
+                        <h2 id="walk-blog-title">오늘은 어디를 걸을까?</h2>
+                    </div>
+                    <p id="walk-result-count" class="walk-result-count" aria-live="polite">0개의 코스</p>
+                </div>
+
+                <!-- select와 checkbox 값을 바꾸면 JavaScript가 게시글 배열을 필터링한다. -->
+                <div class="walk-filter-panel">
+                    <p>
+                        <label for="walk-area-filter">지역</label>
+                        <select id="walk-area-filter">
+                            <option value="all">전체 지역</option>
+                            <option value="east">동부 도쿄</option>
+                            <option value="central">도심</option>
+                            <option value="bay">도쿄 베이</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="walk-mood-filter">분위기</label>
+                        <select id="walk-mood-filter">
+                            <option value="all">전체 분위기</option>
+                            <option value="riverside">강변</option>
+                            <option value="night">야경</option>
+                            <option value="culture">예술</option>
+                            <option value="shopping">쇼핑</option>
+                            <option value="themepark">테마파크</option>
+                        </select>
+                    </p>
+                    <label class="walk-favorite-filter" for="walk-favorite-only">
+                        <input type="checkbox" id="walk-favorite-only">
+                        관심 코스만 보기
+                    </label>
+                    <button type="button" id="walk-filter-reset" class="walk-filter-reset">
+                        필터 초기화
+                    </button>
+                </div>
+
+                <!-- JavaScript가 게시글 카드를 만들어 이 영역에 넣는다. -->
+                <div id="walk-post-list" class="walk-post-list" aria-live="polite"></div>
+                <p id="walk-empty" class="walk-empty" hidden>
+                    선택한 조건에 맞는 산책 코스가 없습니다.
+                </p>
+            </section>
+        </main>
+
+        <!-- dialog는 현재 페이지 위에 상세 글을 보여 주는 HTML 요소이다. -->
+        <dialog id="walk-dialog" class="walk-dialog" aria-labelledby="walk-dialog-title">
+            <button
+                type="button"
+                id="walk-dialog-close"
+                class="walk-dialog-close"
+                aria-label="산책 상세 글 닫기"
+            >닫기 ✕</button>
+            <div id="walk-dialog-content"></div>
+        </dialog>
+
+        <footer>
+            <p><small>© 2026 SKALA-FRONT · Tokyo Walk Note</small></p>
+        </footer>
+    </div>
+
+    <script src="../script/walkBlog.js"></script>
+</body>
+</html>

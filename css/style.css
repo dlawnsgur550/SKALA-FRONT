@@ -239,6 +239,33 @@ nav a:focus-visible {
     transform: translateY(-1px);
 }
 
+/* 모든 하위 페이지에서 같은 위치와 모양으로 Main Hub 버튼을 보여 준다. */
+.page-home-nav {
+    margin: 0 0 22px;
+}
+
+.page-home-nav a {
+    display: inline-flex;
+    width: auto;
+    min-height: 42px;
+    padding: 10px 15px;
+    color: var(--blue-700);
+    background-color: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    border-radius: 12px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 750;
+    text-align: left;
+}
+
+.page-home-nav a:hover,
+.page-home-nav a:focus-visible {
+    color: var(--white);
+    background-color: var(--blue-600);
+    border-color: var(--blue-600);
+}
+
 /* 메인 소식과 부가 정보를 비대칭 2열 Grid로 구성한다. */
 .content-layout {
     display: grid;
@@ -790,6 +817,469 @@ video {
     transform: translateY(-5px);
 }
 
+/* 산책 페이지는 기존 파랑에 옅은 초록을 더해 차분한 야외 분위기를 만든다. */
+.walk-container {
+    overflow: hidden;
+}
+
+.walk-hero {
+    position: relative;
+    background:
+        radial-gradient(circle at 88% 22%, rgba(2, 132, 80, 0.13), transparent 28%),
+        linear-gradient(135deg, var(--green-50), var(--blue-50) 64%, var(--white));
+}
+
+.walk-hero::after {
+    position: absolute;
+    right: clamp(26px, 7vw, 80px);
+    bottom: clamp(22px, 4vw, 42px);
+    color: rgba(2, 132, 80, 0.16);
+    font-size: clamp(64px, 10vw, 118px);
+    line-height: 1;
+    content: "歩";
+}
+
+.walk-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.walk-hero-kicker,
+.walk-section-eyebrow {
+    margin: 0 0 8px;
+    color: var(--green-800);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.walk-blog {
+    padding: 20px 0 0;
+    border-bottom: 0;
+}
+
+.walk-blog-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.walk-blog-heading h2 {
+    margin-bottom: 0;
+}
+
+.walk-result-count {
+    flex: 0 0 auto;
+    margin: 4px 0 0;
+    padding: 8px 13px;
+    color: var(--green-800);
+    background-color: var(--green-50);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.walk-filter-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(160px, 1fr)) auto auto;
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 24px;
+    padding: 18px;
+    background-color: var(--grey-50);
+    border-radius: 20px;
+}
+
+.walk-filter-panel p {
+    margin: 0;
+}
+
+.walk-filter-panel label:not(.walk-favorite-filter) {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--grey-700);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.walk-favorite-filter {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 15px;
+    color: var(--grey-700);
+    background-color: var(--white);
+    border: 1px solid var(--grey-300);
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.walk-favorite-filter input {
+    flex: 0 0 auto;
+}
+
+.walk-filter-reset {
+    min-height: 52px;
+    padding: 0 17px;
+    color: var(--grey-700);
+    background-color: var(--grey-200);
+    border: 0;
+    border-radius: 14px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.walk-filter-reset:hover,
+.walk-filter-reset:focus-visible {
+    color: var(--grey-900);
+    background-color: var(--grey-300);
+}
+
+.walk-post-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.walk-card {
+    display: flex;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: 24px;
+    box-shadow: 0 7px 22px rgba(2, 9, 19, 0.06);
+    flex-direction: column;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.walk-card:hover,
+.walk-card:focus-within {
+    border-color: #b8e8d4;
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.walk-card-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.walk-card-body {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.walk-card-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.walk-card-area {
+    overflow: hidden;
+    color: var(--grey-500);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.walk-favorite-button {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    color: var(--grey-600);
+    background-color: var(--grey-100);
+    border: 0;
+    border-radius: 9px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.walk-favorite-button--active {
+    color: var(--orange-800);
+    background-color: var(--orange-50);
+}
+
+.walk-card-title {
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+.walk-card-summary {
+    margin: 0 0 16px;
+    color: var(--grey-600);
+    font-size: 14px;
+}
+
+.walk-card-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: auto;
+}
+
+.walk-card-tag,
+.walk-card-meta {
+    padding: 5px 8px;
+    color: var(--grey-600);
+    background-color: var(--grey-100);
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 650;
+}
+
+.walk-card-tag {
+    color: var(--green-800);
+    background-color: var(--green-50);
+}
+
+.walk-detail-button {
+    width: 100%;
+    margin-top: 17px;
+    padding: 12px 14px;
+    color: var(--white);
+    background-color: var(--grey-900);
+    border: 0;
+    border-radius: 13px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.walk-detail-button:hover,
+.walk-detail-button:focus-visible {
+    background-color: var(--green-800);
+}
+
+.walk-empty {
+    margin: 0;
+    padding: 38px 20px;
+    color: var(--grey-500);
+    background-color: var(--grey-50);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.walk-dialog {
+    position: relative;
+    width: min(92vw, 620px);
+    max-height: 90vh;
+    padding: 0;
+    overflow-y: auto;
+    background-color: var(--white);
+    border: 0;
+    border-radius: 26px;
+    box-shadow: 0 24px 70px rgba(2, 9, 19, 0.25);
+}
+
+.walk-dialog::backdrop {
+    background-color: rgba(25, 31, 40, 0.56);
+    backdrop-filter: blur(4px);
+}
+
+.walk-dialog-close {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    right: 14px;
+    padding: 8px 11px;
+    color: var(--grey-800);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(2, 9, 19, 0.14);
+    backdrop-filter: blur(6px);
+}
+
+/* 상세 창 안에는 사진과 짧은 설명으로 구성된 한 장의 카드만 표시한다. */
+.walk-post-carousel {
+    overflow: hidden;
+    background-color: var(--white);
+    border-radius: 26px;
+}
+
+.walk-post-carousel:focus-visible {
+    outline: 3px solid var(--blue-100);
+    outline-offset: -3px;
+}
+
+.walk-carousel-image-wrap {
+    position: relative;
+    background-color: var(--grey-100);
+}
+
+.walk-carousel-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.walk-carousel-badges {
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.walk-carousel-status {
+    padding: 6px 10px;
+    color: var(--white);
+    background-color: rgba(25, 31, 40, 0.72);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    backdrop-filter: blur(6px);
+}
+
+.walk-carousel-body {
+    padding: 23px 24px 15px;
+}
+
+.walk-carousel-course {
+    min-height: 1.5em;
+    margin: 0 0 7px;
+    color: var(--green-800);
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 꿀팁은 사진 번호와 같은 형태의 배지로 넣어 카드 높이에 영향을 주지 않는다. */
+.walk-carousel-tip {
+    display: inline-block;
+    padding: 6px 10px;
+    color: #5c4700;
+    background-color: rgba(255, 241, 118, 0.94);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 850;
+    backdrop-filter: blur(6px);
+}
+
+.walk-carousel-tip[hidden] {
+    display: none;
+}
+
+.walk-carousel-title {
+    display: -webkit-box;
+    min-height: 2.5em;
+    max-height: 2.5em;
+    margin: 0 0 9px;
+    color: var(--grey-900);
+    overflow: hidden;
+    font-size: clamp(22px, 4vw, 28px);
+    line-height: 1.25;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.walk-carousel-description {
+    display: -webkit-box;
+    min-height: 3em;
+    max-height: 3em;
+    margin: 0;
+    color: var(--grey-600);
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.walk-carousel-controls {
+    display: grid;
+    grid-template-columns: minmax(82px, 1fr) auto minmax(82px, 1fr);
+    gap: 10px;
+    align-items: center;
+    padding: 14px 24px 23px;
+}
+
+.walk-carousel-button {
+    min-height: 40px;
+    padding: 9px 12px;
+    color: var(--grey-700);
+    background-color: var(--white);
+    border: 1px solid var(--grey-300);
+    border-radius: 11px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.walk-carousel-button--next {
+    color: var(--white);
+    background-color: var(--green-800);
+    border-color: var(--green-800);
+}
+
+.walk-carousel-button:hover:not(:disabled),
+.walk-carousel-button:focus-visible:not(:disabled) {
+    border-color: var(--green-800);
+    transform: translateY(-1px);
+}
+
+.walk-carousel-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.38;
+}
+
+.walk-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.walk-carousel-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background-color: var(--grey-300);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.walk-carousel-dot--active {
+    width: 22px;
+    background-color: var(--green-800);
+    border-radius: 999px;
+}
+
 /* 표는 진한 선 대신 행 배경과 얇은 구분선으로 정보를 나눈다. */
 table {
     display: block;
@@ -1126,6 +1616,51 @@ footer p {
 
     .trip-grid {
         grid-template-columns: 1fr;
+    }
+
+    .walk-hero::after {
+        opacity: 0.6;
+    }
+
+    .walk-blog-heading {
+        display: block;
+    }
+
+    .walk-result-count {
+        display: inline-flex;
+        margin-top: 12px;
+    }
+
+    .walk-filter-panel,
+    .walk-post-list {
+        grid-template-columns: 1fr;
+    }
+
+    .walk-card {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .walk-dialog {
+        width: calc(100vw - 24px);
+        padding: 0;
+        border-radius: 20px;
+    }
+
+    .walk-post-carousel {
+        border-radius: 20px;
+    }
+
+    .walk-carousel-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    .walk-carousel-body {
+        padding: 20px 20px 13px;
+    }
+
+    .walk-carousel-controls {
+        padding: 13px 20px 20px;
     }
 
     /* 모바일에서는 단어 아래에 해당 설명이 바로 이어지도록 한 열로 바꾼다. */
