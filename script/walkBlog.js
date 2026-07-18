@@ -12,37 +12,37 @@ const walkPosts = [
         moodLabel: "강변, 야경",
         duration: "90분이상 (천천히 둘러보기 좋은 곳)",
         distance: "약 1.6km",
-        image: "../media/myTrip-asakusa01.jpg",
+        image: "../media/walk-asakusa01-sensoji.jpg",
         imageAlt: "아사쿠사와 스미다강 산책 대표 풍경",
         summary: "전통적인 거리부터 도쿄 최신의 전망대까지",
         slides: [
             {
-                image: "../media/myTrip-asakusa01.jpg",
+                image: "../media/walk-asakusa01-sensoji.jpg",
                 imageAlt: "산책을 시작하는 센소지 풍경",
                 title: "센소지에서 출발",
                 description: "도쿄 최고, 최초의 사찰을 느껴보자"
             },
             {
-                image: "../media/myTrip-asakusa02.jpg",
+                image: "../media/walk-asakusa02-nakamichi.jpg",
                 imageAlt: "작은 상점과 간식 가게가 이어진 나카미세 거리",
                 title: "나카미세 거리",
                 description: "인파를 뚫고 작은 상점과 간식 가게가 이어지는 거리에서 군것질"
             },
             {
-                image: "../media/myTrip-asakusa03.jpg",
+                image: "../media/walk-asakusa03-bunkakankou.jpg",
                 imageAlt: "아사쿠사 문화관광 센터에서 바라본 센소지와 나카미세 거리",
                 title: "아사쿠사 문화관광 센터",
                 description: "유명 건축가 쿠마 켄고의 작품. 엘리베이터를 타고 올라가면 지나왔던 나카미세 거리, 센소지가 보인다!",
                 isTip: true
             },
             {
-                image: "../media/myTrip-asakusa04.jpg",
+                image: "../media/walk-asakusa04-riverwalk.jpg",
                 imageAlt: "스미다강을 건너는 스미다 리버 워크",
                 title: "스미다 리버 워크",
                 description: "스미다 강을 걸어서 건너가보자"
             },
             {
-                image: "../media/myTrip-asakusa05.jpg",
+                image: "../media/walk-asakusa05-skytree.jpg",
                 imageAlt: "산책의 마지막 장소인 도쿄 스카이트리",
                 title: "도쿄 스카이트리",
                 description: "그 유명한 도쿄 스카이트리 좋은 시간대에 전망대를 보려면 미리 예매 필수! soramachi라는곳에 여러 점포들도 입점해있어 식사및 쇼핑도 충분히 가능🤓",

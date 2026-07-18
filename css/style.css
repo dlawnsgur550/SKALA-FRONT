@@ -1086,10 +1086,16 @@ video {
     max-height: 90vh;
     padding: 0;
     overflow-y: auto;
+    scrollbar-width: none;
     background-color: var(--white);
     border: 0;
     border-radius: 26px;
     box-shadow: 0 24px 70px rgba(2, 9, 19, 0.25);
+}
+
+/* 스크롤은 유지하면서 오른쪽에 보이는 흰색 스크롤 영역만 숨긴다. */
+.walk-dialog::-webkit-scrollbar {
+    display: none;
 }
 
 .walk-dialog::backdrop {
@@ -1129,13 +1135,16 @@ video {
 
 .walk-carousel-image-wrap {
     position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
     background-color: var(--grey-100);
 }
 
 .walk-carousel-image {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -1651,7 +1660,7 @@ footer p {
         border-radius: 20px;
     }
 
-    .walk-carousel-image {
+    .walk-carousel-image-wrap {
         aspect-ratio: 1 / 1;
     }
 
