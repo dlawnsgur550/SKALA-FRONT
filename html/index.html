@@ -4,24 +4,20 @@
      <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- title은 본문이 아니라 브라우저 탭에 표시되는 제목이다. -->
     <title>Welcome SKALA</title>
 </head>
 <body>
-    <!-- 같은 class는 여러 문서와 요소에서 재사용할 수 있다. -->
     <div class="container">
     <!-- header는 페이지의 머리말 영역이다. -->
-    <!-- 미션 6: 이 제목에는 페이지가 열릴 때 페이드인 애니메이션이 적용된다. -->
     <header class="home-header">
         <h1>나의 SKALA 유니버스 🚀</h1>
         <p>프로필, 학습 내용, 여행 기록을 모아 둔 개인 메인 Hub입니다.</p>
     </header>
 
     <!-- nav는 다른 페이지로 이동하는 주요 메뉴 영역이다. -->
-    <nav aria-label="Main menu">
+    <nav>
         <h2>📁 Quick Links</h2>
         <ul>
-            <!-- href에는 이동할 문서의 상대 경로를 적는다. -->
             <li><a href="myProfile.html">Profile</a></li>
             <li><a href="myClass.html">Class Schedule</a></li>
             <li><a href="myHoliday.html">Holiday</a></li>
@@ -32,24 +28,22 @@
     </nav>
 
     <hr>
-    <!-- 미션 4: main과 aside를 한 부모로 묶어 CSS Grid의 2열로 배치한다. -->
     <div class="content-layout">
     <!-- main은 페이지마다 하나만 사용하며 핵심 본문을 담는다. -->
     <main>
         <h2>📌 오늘의 주요 소식</h2>
 
         <!-- 오늘의 할 일: DOM 이벤트와 localStorage를 연습하는 체크리스트이다. -->
-        <section class="todo-section" aria-labelledby="todo-title">
+        <section class="todo-section">
             <div class="todo-heading">
                 <div>
                     <p class="todo-eyebrow">DAILY FOCUS</p>
-                    <h3 id="todo-title">✅ 오늘의 할 일</h3>
+                    <h3>✅ 오늘의 할 일</h3>
                 </div>
-                <!-- aria-live는 완료 개수가 바뀌었음을 화면 읽기 프로그램에 알려 준다. -->
-                <span id="todo-count" class="todo-count" aria-live="polite">0 / 0 완료</span>
+                <span id="todo-count" class="todo-count">0 / 0 완료</span>
             </div>
 
-            <!-- submit 이벤트를 사용하면 버튼 클릭과 Enter 입력을 모두 처리할 수 있다. -->
+            <!-- submit 이벤트를 사용하여 버튼 클릭과 Enter 입력을 모두 처리할 수 있다. -->
             <form id="todo-form" class="todo-form">
                 <label class="visually-hidden" for="todo-input">새로운 할 일</label>
                 <input
@@ -67,17 +61,12 @@
             <div
                 id="todo-progress"
                 class="todo-progress"
-                role="progressbar"
-                aria-label="오늘의 할 일 진행률"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-valuenow="0"
             >
                 <span id="todo-progress-bar" class="todo-progress-bar"></span>
             </div>
 
             <!-- JavaScript가 이 목록 안에 할 일 항목을 만들어 넣는다. -->
-            <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+            <ul id="todo-list" class="todo-list"></ul>
             <p id="todo-empty" class="todo-empty">오늘 집중할 일을 가볍게 추가해 보세요.</p>
         </section>
 
@@ -103,11 +92,11 @@
                     src="../media/asakusa.jpg"
                     alt="이달의 여행 베스트 컷"
                 >
-                <!-- figcaption은 figure의 설명글이다. -->
+                <!-- figcaption은 figure의 설명글이다. -->  
                 <figcaption>아사쿠사 센소지</figcaption>
             </figure>
         </section>
-
+        
         <section>
             <h3>🗂️ 포트폴리오 안내</h3>
             <p>상단 메뉴에서 지금까지 작성한 HTML 과제 결과물을 확인할 수 있습니다.</p>
@@ -125,14 +114,13 @@
         </p>
 
         <!-- 261~263페이지 과제: DOM/이벤트, 비동기 호출, ES 모듈 분리 실습이다. -->
-        <section class="realtime-weather" aria-labelledby="weather-title">
+        <section class="realtime-weather">
             <div class="realtime-weather-heading">
-                <h3 id="weather-title">🌦️ 실시간 날씨·대기</h3>
+                <h3>🌦️ 실시간 날씨·대기</h3>
                 <!-- API 정보를 바로 다시 요청할 수 있는 수동 새로고침 버튼이다. -->
                 <button
                     type="button"
                     id="realtime-refresh"
-                    aria-label="실시간 날씨와 대기 정보 새로고침"
                     title="실시간 정보 새로고침"
                 >↻ 새로고침</button>
             </div>
@@ -155,8 +143,7 @@
                 </option>
             </select>
 
-            <!-- aria-live는 내용이 바뀌었음을 화면 읽기 프로그램에 알려 준다. -->
-            <div id="weather-box" aria-live="polite">
+            <div id="weather-box">
                 도시의 날씨와 대기 정보를 불러오는 중입니다.
             </div>
         </section>

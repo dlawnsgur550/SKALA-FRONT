@@ -1,9 +1,3 @@
-/*
- * Toss의 디자인 감도를 참고한 SKALA-FRONT 공통 스타일이다.
- * 로고나 화면을 복제하지 않고, 명확한 정보 계층·넉넉한 여백·회색과 파랑 중심의
- * 디자인 원칙만 포트폴리오에 맞게 적용했다.
- */
-
 /* :root에는 여러 곳에서 재사용할 색상과 크기를 CSS 변수로 모아 둔다. */
 :root {
     --grey-50: #f9fafb;
@@ -1072,7 +1066,7 @@ video {
 }
 
 .walk-empty {
-    margin: 0;
+    margin: 0;              
     padding: 38px 20px;
     color: var(--grey-500);
     background-color: var(--grey-50);

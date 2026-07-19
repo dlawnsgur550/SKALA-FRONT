@@ -232,8 +232,6 @@ function createWalkCard(post) {
         : "walk-favorite-button";
     favoriteButton.dataset.action = "favorite";
     favoriteButton.textContent = isFavorite(post.id) ? "★ 저장됨" : "☆ 관심";
-    favoriteButton.setAttribute("aria-pressed", String(isFavorite(post.id)));
-    favoriteButton.setAttribute("aria-label", `${post.title} 관심 코스 저장`);
 
     detailButton.type = "button";
     detailButton.className = "walk-detail-button";
@@ -282,29 +280,22 @@ function createPostCarousel(post) {
 
     carousel.className = "walk-post-carousel";
     carousel.tabIndex = 0;
-    carousel.setAttribute("aria-label", `${post.title} 사진 게시글`);
 
     imageWrap.className = "walk-carousel-image-wrap";
     image.className = "walk-carousel-image";
     badges.className = "walk-carousel-badges";
     body.className = "walk-carousel-body";
-    body.setAttribute("aria-live", "polite");
     tipBadge.hidden = true;
-    courseTitle.id = "walk-dialog-title";
     controls.className = "walk-carousel-controls";
     dots.className = "walk-carousel-dots";
-    dots.setAttribute("role", "group");
-    dots.setAttribute("aria-label", "사진 바로 이동");
 
     previousButton.type = "button";
     previousButton.className = "walk-carousel-button";
     previousButton.textContent = "← 이전";
-    previousButton.setAttribute("aria-label", "이전 사진 보기");
 
     nextButton.type = "button";
     nextButton.className = "walk-carousel-button walk-carousel-button--next";
     nextButton.textContent = "다음 →";
-    nextButton.setAttribute("aria-label", "다음 사진 보기");
 
     // 사진 파일이 아직 없다면 코스 대표 사진을 대신 보여 준다.
     image.addEventListener("error", () => {
@@ -331,7 +322,6 @@ function createPostCarousel(post) {
         dotButtons.forEach((button, index) => {
             const isCurrent = index === currentIndex;
             button.classList.toggle("walk-carousel-dot--active", isCurrent);
-            button.setAttribute("aria-current", isCurrent ? "step" : "false");
         });
     }
 
@@ -339,7 +329,6 @@ function createPostCarousel(post) {
         const dotButton = document.createElement("button");
         dotButton.type = "button";
         dotButton.className = "walk-carousel-dot";
-        dotButton.setAttribute("aria-label", `${index + 1}번째 사진 ${slide.title} 보기`);
         dotButton.addEventListener("click", () => {
             currentIndex = index;
             renderSlide();

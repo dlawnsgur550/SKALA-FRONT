@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <nav class="page-home-nav" aria-label="Page navigation">
+        <nav class="page-home-nav">
             <a href="index.html">← Main Hub</a>
         </nav>
 
@@ -33,7 +33,7 @@
                     <label for="userEmail">이메일: </label>
                     <input type="text" id="userEmail" name="userEmail" placeholder="example" required>
                     @
-                    <select id="emailDomain" name="emailDomain" aria-label="이메일 도메인 선택" required>
+                    <select id="emailDomain" name="emailDomain" required>
                         <option value="">선택</option>
                         <option value="direct">직접 입력</option>
                         <option value="naver.com">naver.com</option>
@@ -44,7 +44,6 @@
                         type="text"
                         id="customEmailDomain"
                         name="customEmailDomain"
-                        aria-label="이메일 도메인 직접 입력"
                         placeholder="example.com"
                         pattern="[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
                         title="example.com 형식으로 입력하세요."

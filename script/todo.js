@@ -69,7 +69,6 @@ function createTodoElement(todo) {
     checkbox.id = checkboxId;
     checkbox.className = "todo-checkbox";
     checkbox.checked = todo.completed;
-    checkbox.setAttribute("aria-label", `${todo.text} 완료 여부`);
 
     textLabel.className = "todo-text";
     textLabel.htmlFor = checkboxId;
@@ -79,7 +78,6 @@ function createTodoElement(todo) {
     deleteButton.type = "button";
     deleteButton.className = "todo-delete-button";
     deleteButton.textContent = "삭제";
-    deleteButton.setAttribute("aria-label", `${todo.text} 삭제`);
 
     listItem.append(checkbox, textLabel, deleteButton);
     return listItem;
@@ -99,7 +97,6 @@ function renderTodos() {
         : Math.round((completedCount / todos.length) * 100);
 
     todoCount.textContent = `${completedCount} / ${todos.length} 완료`;
-    todoProgress.setAttribute("aria-valuenow", progressPercentage);
     todoProgressBar.style.width = `${progressPercentage}%`;
     todoEmpty.hidden = todos.length > 0;
 }
