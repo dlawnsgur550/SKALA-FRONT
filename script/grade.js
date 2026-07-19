@@ -1,6 +1,5 @@
 /*
  * p231 - 성적 계산기
- * 배열, for 반복문, 숫자 누적, 평균, 조건문을 연습한다.
  */
 
 function calculateGrade() {
