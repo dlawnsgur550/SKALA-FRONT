@@ -6,7 +6,6 @@ const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const todoEmpty = document.querySelector("#todo-empty");
 const todoCount = document.querySelector("#todo-count");
-const todoProgress = document.querySelector("#todo-progress");
 const todoProgressBar = document.querySelector("#todo-progress-bar");
 
 // localStorage에서 사용할 이름이다. 같은 사이트의 다른 저장값과 구분할 수 있다.

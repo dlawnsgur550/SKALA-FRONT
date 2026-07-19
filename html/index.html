@@ -45,7 +45,6 @@
 
             <!-- submit 이벤트를 사용하여 버튼 클릭과 Enter 입력을 모두 처리할 수 있다. -->
             <form id="todo-form" class="todo-form">
-                <label class="visually-hidden" for="todo-input">새로운 할 일</label>
                 <input
                     type="text"
                     id="todo-input"
@@ -58,10 +57,7 @@
             </form>
 
             <!-- 진행 막대는 완료 비율을 시각적으로 보여 준다. -->
-            <div
-                id="todo-progress"
-                class="todo-progress"
-            >
+            <div class="todo-progress">
                 <span id="todo-progress-bar" class="todo-progress-bar"></span>
             </div>
 
@@ -86,17 +82,16 @@
             <h3>📸 이달의 베스트 컷</h3>
             <!-- figure는 이미지와 설명을 하나의 콘텐츠로 묶는다. -->
             <figure>
-                <!-- 아래 파일명을 media 폴더의 실제 이미지 파일명으로 변경하세요. -->
                 <!-- img는 종료 태그가 없으며 src는 경로, alt는 대체 설명이다. -->
                 <img
                     src="../media/asakusa.jpg"
                     alt="이달의 여행 베스트 컷"
                 >
-                <!-- figcaption은 figure의 설명글이다. -->  
+                <!-- figcaption은 figure의 설명글이다. -->
                 <figcaption>아사쿠사 센소지</figcaption>
             </figure>
         </section>
-        
+
         <section>
             <h3>🗂️ 포트폴리오 안내</h3>
             <p>상단 메뉴에서 지금까지 작성한 HTML 과제 결과물을 확인할 수 있습니다.</p>
@@ -160,7 +155,6 @@
         <section class="mini-games">
             <h3>🎮 자바스크립트 천국</h3>
             <div class="mini-game-buttons">
-                <!-- type="button"은 폼 제출 기능이 없는 일반 실행 버튼을 뜻한다. -->
                 <button type="button" onclick="playUpDown()">업다운 게임 🚀</button>
                 <button type="button" onclick="calculateGrade()">성적 계산기 📊</button>
                 <button type="button" onclick="showMyBag()">내 가방 보기 🎒</button>
@@ -168,8 +162,6 @@
         </section>
     </aside>
     </div>
-
-    <hr>
 
     <!-- footer는 저작권, 연락처 같은 페이지의 마무리 정보를 담는다. -->
     <footer>

@@ -34,11 +34,6 @@
     box-sizing: border-box;
 }
 
-html {
-    /* 페이지 안의 링크 이동이나 스크롤을 부드럽게 연결한다. */
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
     padding: 48px 24px;
@@ -51,7 +46,6 @@ body {
     font-weight: 400;
     line-height: 1.65;
     word-break: keep-all;
-    -webkit-font-smoothing: antialiased;
 }
 
 /* 드래그해서 선택한 글자에도 대표 파란색을 연하게 사용한다. */
@@ -128,8 +122,7 @@ mark {
 }
 
 /* 페이지의 첫 제목 아래에 얇은 구분선을 두어 시작점을 만든다. */
-body > .container > h1,
-body > .container > h2:first-child {
+body > .container > h1 {
     margin-bottom: 36px;
     padding: 10px 0 30px;
     border-bottom: 1px solid var(--grey-200);
@@ -422,7 +415,7 @@ main > section:last-child {
     background-color: var(--white);
     border: 1px solid transparent;
     border-radius: 14px;
-    transition: border-color 0.2s ease, opacity 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 .todo-item:hover {
@@ -480,19 +473,6 @@ main > section:last-child {
     border-radius: 14px;
     font-size: 14px;
     text-align: center;
-}
-
-/* 화면에는 보이지 않지만 화면 읽기 프로그램은 입력창의 설명을 읽을 수 있다. */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 /* figure의 이미지와 설명을 하나의 큰 콘텐츠 카드처럼 보이게 한다. */
@@ -804,8 +784,7 @@ video {
     border-radius: 18px;
 }
 
-.trip-card:hover,
-.trip-card:focus-within {
+.trip-card:hover {
     background-color: var(--blue-50);
     box-shadow: var(--shadow-hover);
     transform: translateY(-5px);
@@ -1066,7 +1045,7 @@ video {
 }
 
 .walk-empty {
-    margin: 0;              
+    margin: 0;
     padding: 38px 20px;
     color: var(--grey-500);
     background-color: var(--grey-50);
@@ -1189,10 +1168,6 @@ video {
     font-size: 12px;
     font-weight: 850;
     backdrop-filter: blur(6px);
-}
-
-.walk-carousel-tip[hidden] {
-    display: none;
 }
 
 .walk-carousel-title {
@@ -1492,8 +1467,6 @@ input[type="checkbox"] {
 }
 
 /* 제출은 대표 파랑, 초기화는 중립 회색으로 역할을 구분한다. */
-.btn-submit,
-.btn-reset,
 input[type="submit"],
 input[type="reset"] {
     min-height: 52px;
@@ -1509,25 +1482,21 @@ input[type="reset"] {
         transform 0.2s ease;
 }
 
-.btn-submit,
 input[type="submit"] {
     background-color: var(--blue-600);
     box-shadow: 0 7px 16px rgba(34, 114, 235, 0.2);
 }
 
-.btn-reset,
 input[type="reset"] {
     color: var(--grey-700);
     background-color: var(--grey-200);
 }
 
-.btn-submit:hover,
 input[type="submit"]:hover {
     background-color: var(--blue-700);
     transform: translateY(-2px);
 }
 
-.btn-reset:hover,
 input[type="reset"]:hover {
     color: var(--grey-900);
     background-color: var(--grey-300);
@@ -1646,7 +1615,6 @@ footer p {
 
     .walk-dialog {
         width: calc(100vw - 24px);
-        padding: 0;
         border-radius: 20px;
     }
 
@@ -1704,8 +1672,6 @@ footer p {
         margin: 5px 0;
     }
 
-    .btn-submit,
-    .btn-reset,
     input[type="submit"],
     input[type="reset"] {
         width: 100%;
@@ -1725,9 +1691,7 @@ footer p {
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
 }

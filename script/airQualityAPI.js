@@ -1,6 +1,5 @@
 // 이 파일은 Open-Meteo에서 공기질과 자외선 데이터를 가져오는 역할만 담당한다.
 
-// export한 함수는 realtimeInfo.js에서 import하여 사용할 수 있다.
 export async function getCurrentAirQuality(latitude, longitude) {
     // 현재 도시의 PM2.5, PM10, 미국식 AQI, 자외선 지수를 요청한다.
     const apiUrl =
@@ -20,8 +19,6 @@ export async function getCurrentAirQuality(latitude, longitude) {
 
     return {
         current: airQualityData.current,
-        units: airQualityData.current_units,
-        timezone: airQualityData.timezone,
-        timezoneAbbreviation: airQualityData.timezone_abbreviation
+        units: airQualityData.current_units
     };
 }
