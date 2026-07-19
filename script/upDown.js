@@ -1,6 +1,5 @@
 /*
  * p230 - Up-Down 숫자 맞추기 게임
- * 변수, Math 객체, while 반복문, 조건문, prompt와 alert를 연습한다.
  */
 
 function playUpDown() {
